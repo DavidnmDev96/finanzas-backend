@@ -1,10 +1,12 @@
 package com.finanzas.finanzas_backend.Controller;
 
-import com.finanzas.finanzas_backend.Models.Usuario;
-import com.finanzas.finanzas_backend.Services.UsuarioService;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.List;
+
+import com.finanzas.finanzas_backend.Dto.UsuarioPublico;
+import com.finanzas.finanzas_backend.Services.UsuarioService;
 
 @RestController
 public class UsuarioController {
@@ -16,9 +18,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/api/usuarios")
-    public List<Usuario> obtenerTodos() {
-        List<Usuario> usuarios = usuarioService.obtenerTodos();
-        System.out.println("Usuarios encontrados: " + usuarios.size());
-        return usuarios;
+    public List<UsuarioPublico> obtenerTodos() {
+        return usuarioService.obtenerTodos();
     }
 }

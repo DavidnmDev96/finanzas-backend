@@ -1,9 +1,11 @@
 package com.finanzas.finanzas_backend.Services;
 
-import com.finanzas.finanzas_backend.Models.Usuario;
-import com.finanzas.finanzas_backend.Repository.UsuarioRepository;
-import org.springframework.stereotype.Service;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.finanzas.finanzas_backend.Dto.UsuarioPublico;
+import com.finanzas.finanzas_backend.Repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
@@ -14,7 +16,7 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public List<Usuario> obtenerTodos() {
-        return usuarioRepository.findAll();
+    public List<UsuarioPublico> obtenerTodos() {
+        return usuarioRepository.findAll().stream().map(UsuarioPublico::desde).toList();
     }
 }

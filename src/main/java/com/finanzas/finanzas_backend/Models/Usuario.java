@@ -1,9 +1,10 @@
 package com.finanzas.finanzas_backend.Models;
 
+import java.time.Instant;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.time.LocalDateTime;
-import java.util.List;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "usuarios")
 public class Usuario {
@@ -11,95 +12,68 @@ public class Usuario {
     @Id
     private String id;
 
-    private String name;
-    private String email;
-    private String password;
-    private String currency;
-    private String language;
-    private List<String> roles;
-    private boolean verified;
-    private LocalDateTime createdAt;
-    private LocalDateTime lastLogin;
+    @Field("nombre")
+    private String nombre;
 
-    public Usuario () {}
+    @Field("email")
+    private String email;
+
+    @Field("password")
+    private String password;
+
+    @Field("rol")
+    private String rol;
+
+    @Field("fechaCreacion")
+    private Instant fechaCreacion;
+
+    public Usuario() {}
 
     public String getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public boolean isVerified() {
-        return verified;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getLastLogin() {
-        return lastLogin;
     }
 
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public String getRol() {
+        return rol;
     }
 
-    public void setLanguage(String language) {
-        this.language = language;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
+    public Instant getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setVerified(boolean verified) {
-        this.verified = verified;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setLastLogin(LocalDateTime lastLogin) {
-        this.lastLogin = lastLogin;
+    public void setFechaCreacion(Instant fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 }
